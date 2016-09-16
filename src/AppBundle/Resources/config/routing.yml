@@ -12,3 +12,8 @@ app_faq:
     path: /faq
     defaults:
         _controller: AppBundle:Home:faq
+
+app_contact:
+    path: /contact
+    defaults:
+        _controller: AppBundle:Contact:form
