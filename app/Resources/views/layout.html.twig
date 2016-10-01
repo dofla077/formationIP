@@ -61,7 +61,10 @@
     {% include ':components:footer.html.twig' %}
 </div>
 
-{% include ':components:contact-modal.html.twig' %}
+{#{% include ':components:contact-modal.html.twig' %}#}
+<div class="fn-modal">
+    {{ render(controller('AppBundle:Contact:form')) }}
+</div>
 </body>
 
 {% block javascript %}
@@ -94,6 +97,27 @@
             }
 
         });*/
+
+        //Contact modal form
+        $(document).ready(function () {
+            $(document).on('submit', '.fn-form-modal-contact', function (e) {
+                e.preventDefault()
+                var _self = $(this)
+                var _href = _self.attr('action')
+                var _modal = $('.fn-modal')
+                console.log(_href)
+
+                var jqxhr = $.post(_href);
+                jqxhr.success(function (response) {
+                    if (response) {
+                        var _oldModal = $('#myModal')
+                        _oldModal.modal('hide')
+                        console.log(response);
+                    }
+                });
+            })
+        })
+
     </script>
 
 {% endblock %}

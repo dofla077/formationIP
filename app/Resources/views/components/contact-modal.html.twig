@@ -2,6 +2,7 @@
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
+            {{ form_start(form, {'action': path('app_contact'), 'attr': {'class': 'form-horizontal fn-form-modal-contact'}}) }}
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                     <i class="material-icons">clear</i>
@@ -11,13 +12,14 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-sm-offset-1 col-sm-8">
-                        <form action="#" class="form-horizontal">
+                        {#<form action="#" class="form-horizontal">#}
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon">
                                         <i class="material-icons">face</i>
                                     </span>
-                                    <input type="text" class="form-control" placeholder="Firstname">
+                                    {#<input type="text" class="form-control" placeholder="Firstname">#}
+                                    {{ form_row(form.firstname, {'attr': {'class': 'form-control' } }) }}
                                 </div>
                             </div>
                             <div class="form-group">
@@ -25,7 +27,8 @@
                                     <span class="input-group-addon">
                                         <i class="material-icons">face</i>
                                     </span>
-                                    <input type="text" class="form-control" placeholder="Lastname">
+                                    {#<input type="text" class="form-control" placeholder="Lastname">#}
+                                    {{ form_row(form.lastname, {'attr': {'class': 'form-control' } }) }}
                                 </div>
                             </div>
                             <div class="form-group">
@@ -33,7 +36,8 @@
                                     <span class="input-group-addon">
                                         <i class="material-icons">contact_mail</i>
                                     </span>
-                                    <input type="email" class="form-control" placeholder="Email">
+                                    {#<input type="email" class="form-control" placeholder="Email">#}
+                                    {{ form_row(form.email, {'attr': {'class': 'form-control' } }) }}
                                 </div>
                             </div>
                             <div class="form-group">
@@ -41,18 +45,21 @@
                                     <span class="input-group-addon">
                                         <i class="material-icons">message</i>
                                     </span>
-                                    <textarea class="form-control" placeholder="Here can be your nice text" rows="3"></textarea>
+                                    {#<textarea class="form-control" placeholder="Here can be your nice text" rows="3"></textarea>#}
+                                    {{ form_row(form.content, {'attr': {'class': 'form-control' } }) }}
                                 </div>
                             </div>
-                        </form>
+                        {#</form>#}
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">
-                        <i class="material-icons">send</i> Envoyer
+                <button type="submit" class="btn btn-primary">
+                    <i class="material-icons">send</i> Envoyer
                 </button>
             </div>
+            {{ form_row(form._token) }}
+            {{ form_end(form) }}
         </div>
     </div>
 </div>
